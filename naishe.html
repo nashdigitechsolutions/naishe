@@ -1,0 +1,1666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naishe's Heart for Comrade</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, 
+                #0c1445 0%, 
+                #1a237e 20%, 
+                #283593 40%, 
+                #3949ab 60%, 
+                #5c6bc0 80%, 
+                #7986cb 100%);
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Romantic Background Pattern - Less intense for mobile */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.03) 0%, transparent 15%),
+                radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.02) 0%, transparent 15%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 15px;
+            position: relative;
+        }
+
+        /* Floating Hearts - Reduced for mobile */
+        .hearts-container {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .heart {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.08);
+            font-size: 1rem;
+            animation: floatHeart linear infinite;
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.2;
+            }
+            90% {
+                opacity: 0.2;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Romantic Login Screen - Mobile Optimized */
+        .login-screen {
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(26, 35, 126, 0.8);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(92, 107, 192, 0.4);
+            box-shadow: 
+                0 0 20px rgba(121, 134, 203, 0.3),
+                inset 0 0 15px rgba(121, 134, 203, 0.1),
+                0 8px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, 
+                #E1BEE7 0%, 
+                #B39DDB 30%, 
+                #FFFFFF 70%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            color: #E1BEE7;
+            position: relative;
+            font-style: italic;
+            line-height: 1.4;
+        }
+
+        .name-input-container {
+            position: relative;
+            margin: 25px 0;
+        }
+
+        .name-input {
+            width: 100%;
+            padding: 16px 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(121, 134, 203, 0.6);
+            border-radius: 30px;
+            color: white;
+            font-size: 1rem;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 1;
+            font-family: 'Montserrat', sans-serif;
+            box-shadow: 
+                inset 0 0 15px rgba(121, 134, 203, 0.2),
+                0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .name-input:focus {
+            outline: none;
+            border-color: #E1BEE7;
+            box-shadow: 
+                0 0 20px rgba(225, 190, 231, 0.4),
+                inset 0 0 15px rgba(121, 134, 203, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.01);
+        }
+
+        .name-input::placeholder {
+            color: rgba(225, 190, 231, 0.6);
+            font-size: 0.95rem;
+        }
+
+        .lock-icon, .key-icon {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #E1BEE7;
+            z-index: 2;
+            font-size: 1.2rem;
+        }
+
+        .lock-icon {
+            left: 20px;
+        }
+
+        .key-icon {
+            right: 20px;
+        }
+
+        .unlock-btn {
+            background: linear-gradient(135deg, 
+                #7986CB 0%, 
+                #5C6BC0 50%, 
+                #3949AB 100%);
+            color: white;
+            border: none;
+            padding: 16px 30px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            margin-top: 20px;
+            width: 100%;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.5px;
+            box-shadow: 
+                0 8px 20px rgba(57, 73, 171, 0.4);
+        }
+
+        .hint-text {
+            margin-top: 20px;
+            color: #B39DDB;
+            font-size: 0.85rem;
+            font-family: 'Playfair Display', serif;
+            position: relative;
+            font-style: italic;
+            line-height: 1.4;
+        }
+
+        /* Welcome Screen - Mobile Optimized */
+        .welcome-screen {
+            display: none;
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            padding: 20px 15px;
+            position: relative;
+        }
+
+        .love-letter {
+            background: rgba(26, 35, 126, 0.85);
+            border-radius: 20px;
+            padding: 25px 20px;
+            border: 2px solid rgba(121, 134, 203, 0.4);
+            box-shadow: 
+                0 0 30px rgba(121, 134, 203, 0.4),
+                inset 0 0 20px rgba(121, 134, 203, 0.1),
+                0 10px 25px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(15px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .letter-content {
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.05) 0%, 
+                rgba(121, 134, 203, 0.08) 100%);
+            border-radius: 12px;
+            padding: 20px 15px;
+            margin: 20px 0;
+            border-left: 4px solid #E1BEE7;
+            position: relative;
+            text-align: left;
+            font-family: 'Playfair Display', serif;
+            font-size: 0.95rem; /* Smaller text for mobile */
+            line-height: 1.6;
+            color: #f3e5f5;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            box-shadow: 
+                inset 0 0 20px rgba(121, 134, 203, 0.1),
+                0 3px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .letter-content p {
+            margin-bottom: 15px;
+        }
+
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #E1BEE7;
+            text-align: right;
+            margin-top: 25px;
+            text-shadow: 
+                0 2px 10px rgba(225, 190, 231, 0.4),
+                0 0 15px rgba(121, 134, 203, 0.3);
+        }
+
+        /* Tour Screen - Mobile Optimized */
+        .tour-screen {
+            display: none;
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+            padding: 15px 10px;
+        }
+
+        .gallery-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, 
+                #E1BEE7 0%, 
+                #B39DDB 40%, 
+                #FFFFFF 80%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        /* Media Viewer - Mobile Optimized */
+        .media-viewer {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin: 20px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.3),
+                0 0 0 3px rgba(121, 134, 203, 0.3),
+                inset 0 0 20px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, 
+                rgba(26, 35, 126, 0.7) 0%, 
+                rgba(40, 53, 147, 0.8) 100%);
+            border: 2px solid rgba(121, 134, 203, 0.5);
+        }
+
+        /* 3:4 Aspect Ratio Container for Mobile */
+        .aspect-ratio-container {
+            position: relative;
+            width: 100%;
+            padding-top: 133.33%;
+        }
+
+        .main-media, .main-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .image-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+            padding: 0 5px;
+        }
+
+        /* Thumbnails - Mobile Optimized */
+        .nav-preview {
+            width: 70px;
+            height: 93px; /* 2:3 aspect ratio */
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            flex-shrink: 0;
+        }
+
+        .nav-preview.active {
+            opacity: 1;
+            border-color: #E1BEE7;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 
+                0 10px 25px rgba(121, 134, 203, 0.4),
+                0 0 15px rgba(225, 190, 231, 0.3);
+        }
+
+        .nav-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .preview-number {
+            position: absolute;
+            top: 3px;
+            right: 3px;
+            background: linear-gradient(135deg, 
+                #7986CB 0%, 
+                #5C6BC0 100%);
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .video-indicator {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            z-index: 2;
+        }
+
+        /* Love Messages - Mobile Optimized */
+        .love-messages {
+            background: linear-gradient(135deg, 
+                rgba(26, 35, 126, 0.7) 0%, 
+                rgba(40, 53, 147, 0.8) 100%);
+            border-radius: 15px;
+            padding: 20px 15px;
+            margin: 25px 0;
+            border: 2px solid rgba(121, 134, 203, 0.4);
+            position: relative;
+            overflow: hidden;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 
+                0 8px 25px rgba(0, 0, 0, 0.2),
+                inset 0 0 20px rgba(121, 134, 203, 0.1);
+        }
+
+        .current-message {
+            font-size: 1.1rem;
+            font-family: 'Playfair Display', serif;
+            color: #f3e5f5;
+            line-height: 1.5;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 100%;
+            padding: 0 10px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            font-style: italic;
+        }
+
+        .message-counter {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 0.8rem;
+            color: #E1BEE7;
+            font-weight: 600;
+            z-index: 2;
+            background: rgba(26, 35, 126, 0.8);
+            padding: 5px 12px;
+            border-radius: 15px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(121, 134, 203, 0.4);
+        }
+
+        /* Music Player - Mobile Optimized */
+        .music-player {
+            background: linear-gradient(135deg, 
+                rgba(26, 35, 126, 0.85) 0%, 
+                rgba(40, 53, 147, 0.95) 100%);
+            border-radius: 15px;
+            padding: 20px 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 2px solid rgba(121, 134, 203, 0.5);
+            margin-top: 20px;
+            width: 100%;
+            backdrop-filter: blur(15px);
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.3),
+                inset 0 0 20px rgba(121, 134, 203, 0.1);
+            gap: 15px;
+        }
+
+        .song-info {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .song-title {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: #f3e5f5;
+            font-weight: 600;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            font-family: 'Dancing Script', cursive;
+            line-height: 1.2;
+        }
+
+        .song-artist {
+            font-size: 0.9rem;
+            color: #E1BEE7;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+        }
+
+        .player-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            width: 100%;
+        }
+
+        .control-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, 
+                rgba(121, 134, 203, 0.2) 0%, 
+                rgba(92, 107, 192, 0.3) 100%);
+            border: 2px solid rgba(121, 134, 203, 0.7);
+            color: #E1BEE7;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .play-btn {
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, 
+                #7986CB 0%, 
+                #5C6BC0 50%, 
+                #3949AB 100%);
+            color: white;
+            border: none;
+            box-shadow: 0 5px 15px rgba(57, 73, 171, 0.4);
+        }
+
+        .player-status {
+            font-size: 0.85rem;
+            color: #E1BEE7;
+            margin-top: 8px;
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            width: 100%;
+        }
+
+        .volume-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .volume-icon {
+            color: #E1BEE7;
+            font-size: 1.2rem;
+        }
+
+        #volumeControl {
+            width: 120px;
+            height: 5px;
+            border-radius: 3px;
+            background: linear-gradient(90deg, 
+                #7986CB, 
+                #5C6BC0, 
+                #3949AB);
+            outline: none;
+            opacity: 0.8;
+        }
+
+        #volumeControl::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #E1BEE7;
+            cursor: pointer;
+            border: 2px solid white;
+            box-shadow: 0 0 10px rgba(225, 190, 231, 0.5);
+        }
+
+        /* Slideshow Controls - Mobile Optimized */
+        .slideshow-controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin: 15px 0;
+            width: 100%;
+        }
+
+        .slideshow-info {
+            color: #E1BEE7;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .slideshow-buttons {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .slideshow-btn {
+            background: rgba(121, 134, 203, 0.2);
+            border: 2px solid rgba(121, 134, 203, 0.5);
+            color: #E1BEE7;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            flex: 1;
+            max-width: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        /* Video Controls - Mobile Optimized */
+        .video-controls {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 8px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .video-control-btn {
+            background: rgba(121, 134, 203, 0.7);
+            border: none;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        /* Navigation Buttons - Mobile Optimized */
+        .nav-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 25px;
+            width: 100%;
+            align-items: center;
+        }
+
+        .nav-btn {
+            padding: 14px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            border: none;
+            width: 100%;
+            max-width: 280px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .primary-btn {
+            background: linear-gradient(135deg, 
+                #7986CB 0%, 
+                #5C6BC0 50%, 
+                #3949AB 100%);
+            color: white;
+            box-shadow: 0 8px 20px rgba(57, 73, 171, 0.4);
+        }
+
+        /* Footer - Mobile Optimized */
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #B39DDB;
+            font-family: 'Playfair Display', serif;
+            padding: 15px;
+            font-size: 0.9rem;
+            width: 100%;
+            max-width: 400px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            line-height: 1.4;
+        }
+
+        .heart {
+            color: #FF6B9D;
+            animation: heartbeat 1.5s infinite;
+            display: inline-block;
+        }
+
+        /* Denied Screen - Mobile Optimized */
+        .denied-screen {
+            display: none;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            padding: 20px 15px;
+        }
+
+        .denied-container {
+            background: linear-gradient(135deg, 
+                rgba(26, 35, 126, 0.85) 0%, 
+                rgba(40, 53, 147, 0.95) 100%);
+            border-radius: 20px;
+            padding: 30px 20px;
+            border: 3px solid rgba(255, 50, 100, 0.5);
+            box-shadow: 
+                0 0 30px rgba(255, 50, 100, 0.4),
+                inset 0 0 20px rgba(255, 50, 100, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .denied-icon {
+            font-size: 3.5rem;
+            color: #FF6B9D;
+            margin-bottom: 15px;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        .denied-text {
+            font-size: 1.5rem;
+            color: #FF6B9D;
+            margin-bottom: 15px;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        /* Hide romantic quotes on mobile for cleaner look */
+        .romantic-quote {
+            display: none;
+        }
+
+        /* Media Queries for Larger Screens */
+        @media (min-width: 768px) {
+            .container {
+                padding: 30px 20px;
+                justify-content: center;
+            }
+
+            .login-screen {
+                padding: 40px 30px;
+                max-width: 450px;
+            }
+
+            h1 {
+                font-size: 3rem;
+            }
+
+            .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .name-input {
+                padding: 18px 50px;
+                font-size: 1.1rem;
+            }
+
+            .letter-content {
+                font-size: 1.1rem;
+                padding: 25px 20px;
+            }
+
+            .signature {
+                font-size: 2.5rem;
+            }
+
+            .tour-screen {
+                max-width: 700px;
+                padding: 20px;
+            }
+
+            .gallery-title {
+                font-size: 2.5rem;
+            }
+
+            .media-viewer {
+                max-width: 500px;
+            }
+
+            .nav-preview {
+                width: 80px;
+                height: 107px;
+            }
+
+            .current-message {
+                font-size: 1.3rem;
+            }
+
+            .music-player {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                padding: 25px;
+            }
+
+            .song-info {
+                text-align: left;
+                flex: 1;
+                min-width: 200px;
+            }
+
+            .player-controls {
+                flex: 0 0 auto;
+            }
+
+            .volume-container {
+                flex: 0 0 100%;
+                margin-top: 15px;
+                justify-content: center;
+            }
+
+            .slideshow-controls {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .slideshow-info {
+                flex: 1;
+                text-align: left;
+            }
+
+            .slideshow-buttons {
+                flex: 0 0 auto;
+                gap: 15px;
+            }
+
+            .slideshow-btn {
+                padding: 10px 20px;
+            }
+
+            .nav-buttons {
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            .nav-btn {
+                max-width: 250px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .login-screen {
+                max-width: 500px;
+                padding: 50px 40px;
+            }
+
+            h1 {
+                font-size: 3.5rem;
+            }
+
+            .tour-screen {
+                max-width: 900px;
+            }
+
+            .media-viewer {
+                max-width: 600px;
+            }
+
+            .nav-preview {
+                width: 90px;
+                height: 120px;
+            }
+
+            .romantic-quote {
+                display: block;
+                position: absolute;
+                color: rgba(255, 255, 255, 0.05);
+                font-size: 1.5rem;
+                font-family: 'Dancing Script', cursive;
+                pointer-events: none;
+                animation: floatQuote 25s linear infinite;
+                z-index: -1;
+            }
+
+            @keyframes floatQuote {
+                0% {
+                    transform: translateY(100vh) rotate(0deg);
+                    opacity: 0;
+                }
+                10% {
+                    opacity: 0.05;
+                }
+                90% {
+                    opacity: 0.05;
+                }
+                100% {
+                    transform: translateY(-100px) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Hearts -->
+    <div class="hearts-container" id="heartsContainer"></div>
+
+    <!-- Romantic Quotes (Hidden on mobile) -->
+    <div class="romantic-quote" style="left: 5%; animation-delay: 0s;">Love</div>
+    <div class="romantic-quote" style="left: 25%; animation-delay: 5s;">Forever</div>
+    <div class="romantic-quote" style="left: 45%; animation-delay: 10s;">Together</div>
+    <div class="romantic-quote" style="left: 65%; animation-delay: 15s;">Always</div>
+    <div class="romantic-quote" style="left: 85%; animation-delay: 20s;">Yours</div>
+
+    <div class="container">
+        <!-- Login Screen -->
+        <div class="login-screen" id="loginScreen">
+            <h1><i class="fas fa-heart"></i> My Heart's Song</h1>
+            <p class="subtitle">Enter the secret garden of my heart</p>
+            
+            <div class="name-input-container">
+                <i class="fas fa-heart lock-icon"></i>
+                <input type="text" class="name-input" id="nameInput" placeholder="Whisper your name...">
+                <i class="fas fa-heart key-icon"></i>
+            </div>
+            
+            <button class="unlock-btn" id="loginBtn">
+                <i class="fas fa-heartbeat"></i> Unlock My Heart
+            </button>
+            
+            <p class="hint-text">
+                "In your eyes, I found my forever home"
+            </p>
+        </div>
+
+        <!-- Welcome Screen -->
+        <div class="welcome-screen" id="welcomeScreen">
+            <div class="love-letter">
+                <h1><i class="fas fa-heart"></i> My Dearest Comrade</h1>
+                
+                <div class="letter-content">
+                    <p>My darling Comrade,</p>
+                    <p>
+                        From the moment our souls first whispered to each other, I knew I had found something extraordinary. 
+                        You are the melody that plays in my heart when the world is silent, the warmth that fills me when days grow cold.
+                    </p>
+                    <p>
+                        Each moment with you feels like discovering a new constellation in the night sky - beautiful, mysterious, 
+                        and uniquely ours. Your laughter is my favorite symphony, your touch my most cherished comfort.
+                    </p>
+                    <p>
+                        I created this space as a sanctuary for us - a collection of moments, memories, and promises that weave 
+                        the tapestry of our love story. Every image, every word, every heartbeat here is dedicated to you.
+                    </p>
+                    <p style="color: #E1BEE7; font-style: italic; margin-top: 15px;">
+                        "I carry your heart with me (I carry it in my heart)"
+                    </p>
+                </div>
+                
+                <div class="signature">
+                    Forever Yours,<br>
+                    Naishe
+                </div>
+                
+                <button class="unlock-btn" id="startTourBtn" style="margin-top: 25px;">
+                    <i class="fas fa-heart"></i> Begin Our Love Story
+                </button>
+            </div>
+        </div>
+
+        <!-- Tour Screen -->
+        <div class="tour-screen" id="tourScreen">
+            <h1 class="gallery-title">Moments I Treasure</h1>
+            
+            <!-- Media Viewer -->
+            <div class="media-viewer">
+                <div class="aspect-ratio-container">
+                    <img class="main-media" id="mainImage" src="" alt="Our precious memory">
+                    <video class="main-video" id="mainVideo" style="display: none;" muted playsinline>
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-controls" id="videoControls" style="display: none;">
+                    <button class="video-control-btn" id="playVideoBtn">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <button class="video-control-btn" id="replayVideoBtn">
+                        <i class="fas fa-redo"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Thumbnails -->
+            <div class="image-nav" id="imageNav">
+                <!-- Generated by JavaScript -->
+            </div>
+            
+            <!-- Slideshow Controls -->
+            <div class="slideshow-controls">
+                <div class="slideshow-info">
+                    Next in: <span id="slideshowTimer">20</span>s
+                </div>
+                <div class="slideshow-buttons">
+                    <button class="slideshow-btn" id="pauseSlideshowBtn">
+                        <i class="fas fa-pause"></i> Pause
+                    </button>
+                    <button class="slideshow-btn" id="nextSlideBtn">
+                        <i class="fas fa-forward"></i> Next
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Love Messages -->
+            <div class="love-messages">
+                <div class="current-message" id="currentMessage">
+                    Your smile is the sunrise that colors my world with hope and warmth...
+                </div>
+                <div class="message-counter">
+                    <span id="messageIndex">1</span>/5
+                </div>
+            </div>
+            
+            <!-- Music Player -->
+            <div class="music-player">
+                <div class="song-info">
+                    <div class="song-title">Our Love's Melody</div>
+                    <div class="song-artist">Ryan Jays - Kwaunobva (feat. Naishe Rowland)</div>
+                    <div class="player-status" id="playerStatus">Music playing...</div>
+                </div>
+                
+                <div class="player-controls">
+                    <button class="control-btn" id="prevBtn" title="Previous">
+                        <i class="fas fa-step-backward"></i>
+                    </button>
+                    <button class="control-btn play-btn" id="playBtn" title="Play">
+                        <i class="fas fa-pause"></i>
+                    </button>
+                    <button class="control-btn" id="stopBtn" title="Stop">
+                        <i class="fas fa-stop"></i>
+                    </button>
+                    <button class="control-btn" id="nextBtn" title="Next">
+                        <i class="fas fa-step-forward"></i>
+                    </button>
+                </div>
+                
+                <div class="volume-container">
+                    <i class="fas fa-volume-up volume-icon"></i>
+                    <input type="range" id="volumeControl" min="0" max="1" step="0.1" value="0.7">
+                </div>
+            </div>
+            
+            <!-- Navigation -->
+            <div class="nav-buttons">
+                <button class="nav-btn primary-btn" id="backBtn">
+                    <i class="fas fa-home"></i> Return to Start
+                </button>
+            </div>
+        </div>
+
+        <!-- Denied Screen -->
+        <div class="denied-screen" id="deniedScreen">
+            <div class="denied-container">
+                <div class="denied-icon">
+                    <i class="fas fa-heart-broken"></i>
+                </div>
+                
+                <h2 style="font-size: 1.5rem; margin-bottom: 15px;">My Heart Recognizes Only One</h2>
+                
+                <p class="denied-text">HEART LOCKED</p>
+                
+                <p style="color: #E1BEE7; margin-bottom: 20px; line-height: 1.5; font-size: 0.95rem;">
+                    These whispers of love are meant only for my dearest Comrade.
+                    My heart beats to the rhythm of one name alone.
+                </p>
+                
+                <button class="unlock-btn" id="backToLoginBtn" style="background: linear-gradient(135deg, #FF3264 0%, #FF6B9D 100%); margin-top: 15px;">
+                    <i class="fas fa-undo"></i> Try Again
+                </button>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer>
+            <p>
+                Crafted with <span class="heart">❤</span> by Naishe for his one true love, Comrade
+            </p>
+            <p style="font-size: 0.85rem; margin-top: 8px; opacity: 0.9; font-style: italic;">
+                "In your eyes, I found my home. In your heart, I found my love."
+            </p>
+        </footer>
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="backgroundMusic" loop>
+        <source src="kwaunobva.mp3" type="audio/mpeg">
+        <source src="kwaunobva.ogg" type="audio/ogg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        // Only one special person
+        const specialPerson = "comrade";
+        let currentImageIndex = 0;
+        let slideshowInterval;
+        let slideshowTimer = 20;
+        let isSlideshowPaused = false;
+        let isVideoPlaying = false;
+        
+        // Romantic images and video
+        const mediaFiles = [
+            {type: 'image', src: 'naishe1.jpg'},
+            {type: 'image', src: 'naishe2.jpg'},
+            {type: 'image', src: 'naishe3.jpg'},
+            {type: 'image', src: 'naishe4.jpg'},
+            {type: 'video', src: 'naishe5.mp4'}
+        ];
+        
+        // Romantic messages for Comrade
+        const romanticMessages = [
+            "Your smile is the sunrise that colors my world with hope and warmth. I find home in the curve of your lips.",
+            "When our hands touch, electricity dances between our fingertips, and the universe realigns to bring us closer.",
+            "In the quiet moments between heartbeats, I hear your name echoing through my soul - a melody I never want to end.",
+            "Your eyes hold galaxies I've yet to explore, and every glance feels like discovering a new constellation just for us.",
+            "This moment with you is my favorite memory - captured forever in my heart and now in this video."
+        ];
+        
+        // DOM Elements
+        const loginScreen = document.getElementById('loginScreen');
+        const welcomeScreen = document.getElementById('welcomeScreen');
+        const tourScreen = document.getElementById('tourScreen');
+        const deniedScreen = document.getElementById('deniedScreen');
+        
+        const nameInput = document.getElementById('nameInput');
+        const loginBtn = document.getElementById('loginBtn');
+        const startTourBtn = document.getElementById('startTourBtn');
+        const backBtn = document.getElementById('backBtn');
+        const backToLoginBtn = document.getElementById('backToLoginBtn');
+        
+        const mainImage = document.getElementById('mainImage');
+        const mainVideo = document.getElementById('mainVideo');
+        const videoControls = document.getElementById('videoControls');
+        const playVideoBtn = document.getElementById('playVideoBtn');
+        const replayVideoBtn = document.getElementById('replayVideoBtn');
+        
+        const imageNav = document.getElementById('imageNav');
+        const currentMessage = document.getElementById('currentMessage');
+        const messageIndex = document.getElementById('messageIndex');
+        
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        const playBtn = document.getElementById('playBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const volumeControl = document.getElementById('volumeControl');
+        const playerStatus = document.getElementById('playerStatus');
+        
+        const slideshowTimerElement = document.getElementById('slideshowTimer');
+        const pauseSlideshowBtn = document.getElementById('pauseSlideshowBtn');
+        const nextSlideBtn = document.getElementById('nextSlideBtn');
+        
+        // Create floating hearts
+        function createHearts() {
+            const heartsContainer = document.getElementById('heartsContainer');
+            const heartCount = 20; // Reduced for mobile
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '<i class="fas fa-heart"></i>';
+                
+                const size = Math.random() * 20 + 8;
+                const left = Math.random() * 100;
+                const delay = Math.random() * 20;
+                const duration = Math.random() * 15 + 15;
+                
+                heart.style.fontSize = `${size}px`;
+                heart.style.left = `${left}%`;
+                heart.style.animationDelay = `${delay}s`;
+                heart.style.animationDuration = `${duration}s`;
+                heart.style.color = `rgba(255, ${Math.random() * 100 + 155}, ${Math.random() * 100 + 155}, 0.15)`;
+                
+                heartsContainer.appendChild(heart);
+            }
+        }
+        
+        // Create typing effect for name input
+        function createTypingEffect() {
+            let isTyping = false;
+            
+            nameInput.addEventListener('input', function() {
+                if (!isTyping && this.value.length > 0) {
+                    isTyping = true;
+                }
+                
+                // Check name as user types
+                checkName();
+            });
+        }
+        
+        // Check name
+        function checkName() {
+            const enteredName = nameInput.value.trim().toLowerCase();
+            
+            if (enteredName === "") return;
+            
+            // If user starts typing the correct name, give visual feedback
+            if (specialPerson.startsWith(enteredName)) {
+                nameInput.style.borderColor = '#E1BEE7';
+                nameInput.style.boxShadow = '0 0 20px rgba(225, 190, 231, 0.4)';
+            } else {
+                nameInput.style.borderColor = 'rgba(121, 134, 203, 0.6)';
+                nameInput.style.boxShadow = '0 3px 10px rgba(0, 0, 0, 0.2)';
+            }
+            
+            // If the full correct name is entered
+            if (enteredName === specialPerson) {
+                // Success - show welcome screen after a brief delay
+                setTimeout(() => {
+                    showWelcomeScreen();
+                }, 500);
+            } else if (enteredName.length >= specialPerson.length) {
+                // Wrong name
+                setTimeout(() => {
+                    showDeniedScreen();
+                }, 500);
+            }
+        }
+        
+        // Show welcome screen
+        function showWelcomeScreen() {
+            loginScreen.style.display = 'none';
+            welcomeScreen.style.display = 'block';
+            deniedScreen.style.display = 'none';
+            tourScreen.style.display = 'none';
+            
+            // Start music immediately when correct password is entered
+            startBackgroundMusic();
+            
+            // Add celebration effect with hearts
+            addHeartEffect();
+        }
+        
+        // Start background music
+        function startBackgroundMusic() {
+            backgroundMusic.volume = volumeControl.value;
+            
+            const playPromise = backgroundMusic.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    playerStatus.textContent = 'Playing...';
+                    playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                }).catch(error => {
+                    console.log("Autoplay prevented. User interaction required.");
+                    playerStatus.textContent = 'Click play to start';
+                    playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                });
+            }
+        }
+        
+        // Show denied screen
+        function showDeniedScreen() {
+            loginScreen.style.display = 'none';
+            welcomeScreen.style.display = 'none';
+            deniedScreen.style.display = 'block';
+            tourScreen.style.display = 'none';
+            
+            // Add broken heart effect to input
+            nameInput.style.animation = 'heartbeat 0.5s';
+            nameInput.style.borderColor = '#FF6B9D';
+            setTimeout(() => {
+                nameInput.style.animation = '';
+            }, 500);
+        }
+        
+        // Add heart celebration effect
+        function addHeartEffect() {
+            const heartsContainer = document.getElementById('heartsContainer');
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.innerHTML = '<i class="fas fa-heart"></i>';
+                    heart.style.position = 'absolute';
+                    heart.style.left = `${Math.random() * 100}%`;
+                    heart.style.fontSize = '20px';
+                    heart.style.color = '#FF6B9D';
+                    heart.style.animation = 'floatHeart 2s linear';
+                    heart.style.animationIterationCount = '1';
+                    
+                    heartsContainer.appendChild(heart);
+                    
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 2000);
+                }, i * 100);
+            }
+        }
+        
+        // Start tour
+        function startTour() {
+            welcomeScreen.style.display = 'none';
+            tourScreen.style.display = 'block';
+            
+            // Load media and create thumbnails
+            loadMedia();
+            
+            // Load first message
+            currentMessage.textContent = romanticMessages[0];
+            messageIndex.textContent = '1';
+            
+            // Start slideshow
+            startSlideshow();
+        }
+        
+        // Load media and create thumbnails
+        function loadMedia() {
+            // Clear existing thumbnails
+            imageNav.innerHTML = '';
+            
+            // Set main media (big display)
+            if (mediaFiles[0]) {
+                if (mediaFiles[0].type === 'image') {
+                    mainImage.src = mediaFiles[0].src;
+                    mainImage.style.display = 'block';
+                    mainVideo.style.display = 'none';
+                    videoControls.style.display = 'none';
+                } else {
+                    mainVideo.src = mediaFiles[0].src;
+                    mainVideo.style.display = 'block';
+                    mainImage.style.display = 'none';
+                    videoControls.style.display = 'flex';
+                }
+            }
+            
+            // Create thumbnails
+            mediaFiles.forEach((media, index) => {
+                const preview = document.createElement('div');
+                preview.className = `nav-preview ${index === 0 ? 'active' : ''}`;
+                preview.dataset.index = index;
+                
+                // Create thumbnail image
+                const img = document.createElement('img');
+                if (media.type === 'image') {
+                    img.src = media.src;
+                } else {
+                    // For video, we need to create a thumbnail
+                    img.src = media.src.replace('.mp4', '.jpg') || media.src.replace('.mov', '.jpg') || 'video-thumbnail.jpg';
+                }
+                img.alt = `Memory ${index + 1}`;
+                img.onerror = function() {
+                    // If thumbnail fails to load, use a placeholder
+                    this.src = `https://images.unsplash.com/photo-15${index}07522730-07${index}3c8b5f?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80`;
+                };
+                
+                const number = document.createElement('div');
+                number.className = 'preview-number';
+                number.textContent = index + 1;
+                
+                preview.appendChild(img);
+                preview.appendChild(number);
+                
+                // Add video indicator if it's a video
+                if (media.type === 'video') {
+                    const videoIndicator = document.createElement('div');
+                    videoIndicator.className = 'video-indicator';
+                    videoIndicator.innerHTML = '<i class="fas fa-video"></i>';
+                    preview.appendChild(videoIndicator);
+                }
+                
+                imageNav.appendChild(preview);
+                
+                // Add click event
+                preview.addEventListener('click', () => {
+                    changeMedia(index);
+                    resetSlideshowTimer();
+                });
+            });
+        }
+        
+        // Change media
+        function changeMedia(index) {
+            currentImageIndex = index;
+            const media = mediaFiles[index];
+            
+            // Hide both first
+            mainImage.style.opacity = '0.5';
+            mainVideo.style.opacity = '0.5';
+            
+            setTimeout(() => {
+                if (media.type === 'image') {
+                    mainImage.src = media.src;
+                    mainImage.style.display = 'block';
+                    mainVideo.style.display = 'none';
+                    videoControls.style.display = 'none';
+                    
+                    // Stop video if it was playing
+                    mainVideo.pause();
+                    mainVideo.currentTime = 0;
+                    isVideoPlaying = false;
+                    playVideoBtn.innerHTML = '<i class="fas fa-play"></i>';
+                } else {
+                    mainVideo.src = media.src;
+                    mainVideo.style.display = 'block';
+                    mainImage.style.display = 'none';
+                    videoControls.style.display = 'flex';
+                    
+                    // Auto-play video (muted)
+                    mainVideo.play().then(() => {
+                        isVideoPlaying = true;
+                        playVideoBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                    }).catch(e => {
+                        console.log("Video autoplay prevented");
+                        playVideoBtn.innerHTML = '<i class="fas fa-play"></i>';
+                    });
+                }
+                
+                mainImage.style.opacity = '1';
+                mainVideo.style.opacity = '1';
+            }, 200);
+            
+            // Update message
+            currentMessage.textContent = romanticMessages[index];
+            messageIndex.textContent = (index + 1).toString();
+            
+            // Update active thumbnail
+            document.querySelectorAll('.nav-preview').forEach((preview, i) => {
+                if (i === index) {
+                    preview.classList.add('active');
+                } else {
+                    preview.classList.remove('active');
+                }
+            });
+            
+            // Add heart effect
+            addHeartEffect();
+        }
+        
+        // Start slideshow
+        function startSlideshow() {
+            clearInterval(slideshowInterval);
+            slideshowTimer = 20;
+            slideshowTimerElement.textContent = slideshowTimer;
+            
+            slideshowInterval = setInterval(() => {
+                if (!isSlideshowPaused && !isVideoPlaying) {
+                    slideshowTimer--;
+                    slideshowTimerElement.textContent = slideshowTimer;
+                    
+                    if (slideshowTimer <= 0) {
+                        nextSlide();
+                        slideshowTimer = 20;
+                        slideshowTimerElement.textContent = slideshowTimer;
+                    }
+                }
+            }, 1000);
+        }
+        
+        // Reset slideshow timer
+        function resetSlideshowTimer() {
+            slideshowTimer = 20;
+            slideshowTimerElement.textContent = slideshowTimer;
+        }
+        
+        // Next slide
+        function nextSlide() {
+            let newIndex = currentImageIndex + 1;
+            if (newIndex >= mediaFiles.length) newIndex = 0;
+            changeMedia(newIndex);
+        }
+        
+        // Previous slide
+        function prevSlide() {
+            let newIndex = currentImageIndex - 1;
+            if (newIndex < 0) newIndex = mediaFiles.length - 1;
+            changeMedia(newIndex);
+        }
+        
+        // Event Listeners
+        loginBtn.addEventListener('click', function() {
+            const enteredName = nameInput.value.trim().toLowerCase();
+            if (enteredName === specialPerson) {
+                showWelcomeScreen();
+            } else {
+                showDeniedScreen();
+            }
+        });
+        
+        nameInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const enteredName = nameInput.value.trim().toLowerCase();
+                if (enteredName === specialPerson) {
+                    showWelcomeScreen();
+                } else {
+                    showDeniedScreen();
+                }
+            }
+        });
+        
+        startTourBtn.addEventListener('click', startTour);
+        
+        backBtn.addEventListener('click', function() {
+            tourScreen.style.display = 'none';
+            loginScreen.style.display = 'block';
+            
+            // Reset input
+            nameInput.value = '';
+            
+            // Stop slideshow
+            clearInterval(slideshowInterval);
+            
+            // Stop video if playing
+            mainVideo.pause();
+            mainVideo.currentTime = 0;
+            isVideoPlaying = false;
+            
+            // Stop music
+            backgroundMusic.pause();
+            backgroundMusic.currentTime = 0;
+            playerStatus.textContent = 'Music stopped';
+            playBtn.innerHTML = '<i class="fas fa-play"></i>';
+        });
+        
+        backToLoginBtn.addEventListener('click', function() {
+            deniedScreen.style.display = 'none';
+            loginScreen.style.display = 'block';
+            
+            // Reset input
+            nameInput.value = '';
+        });
+        
+        // Music controls
+        playBtn.addEventListener('click', function() {
+            if (backgroundMusic.paused) {
+                backgroundMusic.play();
+                playerStatus.textContent = 'Playing...';
+                this.innerHTML = '<i class="fas fa-pause"></i>';
+            } else {
+                backgroundMusic.pause();
+                playerStatus.textContent = 'Paused';
+                this.innerHTML = '<i class="fas fa-play"></i>';
+            }
+        });
+        
+        stopBtn.addEventListener('click', function() {
+            backgroundMusic.pause();
+            backgroundMusic.currentTime = 0;
+            playerStatus.textContent = 'Music stopped';
+            playBtn.innerHTML = '<i class="fas fa-play"></i>';
+        });
+        
+        prevBtn.addEventListener('click', function() {
+            prevSlide();
+            resetSlideshowTimer();
+        });
+        
+        nextBtn.addEventListener('click', function() {
+            nextSlide();
+            resetSlideshowTimer();
+        });
+        
+        volumeControl.addEventListener('input', function() {
+            backgroundMusic.volume = this.value;
+        });
+        
+        // Video controls
+        playVideoBtn.addEventListener('click', function() {
+            if (mainVideo.paused) {
+                mainVideo.play();
+                isVideoPlaying = true;
+                this.innerHTML = '<i class="fas fa-pause"></i>';
+            } else {
+                mainVideo.pause();
+                isVideoPlaying = false;
+                this.innerHTML = '<i class="fas fa-play"></i>';
+            }
+        });
+        
+        replayVideoBtn.addEventListener('click', function() {
+            mainVideo.currentTime = 0;
+            mainVideo.play();
+            isVideoPlaying = true;
+            playVideoBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        });
+        
+        // Video ended event
+        mainVideo.addEventListener('ended', function() {
+            isVideoPlaying = false;
+            playVideoBtn.innerHTML = '<i class="fas fa-play"></i>';
+        });
+        
+        // Slideshow controls
+        pauseSlideshowBtn.addEventListener('click', function() {
+            isSlideshowPaused = !isSlideshowPaused;
+            if (isSlideshowPaused) {
+                this.innerHTML = '<i class="fas fa-play"></i> Resume';
+            } else {
+                this.innerHTML = '<i class="fas fa-pause"></i> Pause';
+                resetSlideshowTimer();
+            }
+        });
+        
+        nextSlideBtn.addEventListener('click', function() {
+            nextSlide();
+            resetSlideshowTimer();
+        });
+        
+        // Initialize effects
+        window.addEventListener('DOMContentLoaded', function() {
+            createHearts();
+            createTypingEffect();
+            
+            // Add CSS for shake animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes heartbeat {
+                    0%, 100% { transform: scale(1); }
+                    25% { transform: scale(1.1); }
+                    50% { transform: scale(1.05); }
+                    75% { transform: scale(1.15); }
+                }
+                @keyframes shake {
+                    0%, 100% { transform: translateX(0); }
+                    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+                    20%, 40%, 60%, 80% { transform: translateX(5px); }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Auto-focus on name input
+            setTimeout(() => {
+                nameInput.focus();
+            }, 300);
+        });
+    </script>
+</body>
+</html>
